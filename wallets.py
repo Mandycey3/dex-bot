@@ -1,14 +1,29 @@
-WALLET_FANTOM=0x6299532728655f0b12d8f4dE8f4CC1d0313Ae5d1C
-WALLET_CRONOS=0x0d03187f2d8857d7F20fb91Ad18e8EDF05D2c8D34E
-WALLET_KAVA=kaval1ua6ffv206m6wjkwukyrrgsksk6894fpamaaihpx
-WALLET_SUI=0xdf27ffbffa94f2abcfee5e6149a959b54cc636ccd008041397e9b25ab7b55fb54
-WALLET_ETHEREUM=0xcd0dBCF3181AE3d0EB3C3bA564C9d7CEc5A7C22,0x1dC7166952469B0B4B8E2413fc44Bf09cd41B249f,0x8a010fDfC13e5B7A39c24B132739DbD6AB7CE33F7,0x34F55635bc3dbdEDF46f20c33ED8c73601E62e92,0x8d0148A9bA1Dc3a8b5287759EBCae39983A50366,0xb36C7f112245d3564f67cADAb59E4a9d126b26D5A
-WALLET_BNB_CHAIN=0xcd0dBCF3181AE3d0EB3C3bA564C9d7CEc5A7C22,0x1dC7166952469B0B4B8E2413fc44Bf09cd41B249f,0x8a010fDfC13e5B7A39c24B132739DbD6AB7CE33F7,0x34F55635bc3dbdEDF46f20c33ED8c73601E62e92,0x8d0148A9bA1Dc3a8b5287759EBCae39983A50366,0xb36C7f112245d3564f67cADAb59E4a9d126b26D5A
-WALLET_POLYGON=0xcd0dBCF3181AE3d0EB3C3bA564C9d7CEc5A7C22,0x1dC7166952469B0B4B8E2413fc44Bf09cd41B249f,0x8a010fDfC13e5B7A39c24B132739DbD6AB7CE33F7,0x34F55635bc3dbdEDF46f20c33ED8c73601E62e92,0x8d0148A9bA1Dc3a8b5287759EBCae39983A50366,0xb36C7f112245d3564f67cADAb59E4a9d126b26D5A
-WALLET_ARBITRUM=0xcd0dBCF3181AE3d0EB3C3bA564C9d7CEc5A7C22,0x1dC7166952469B0B4B8E2413fc44Bf09cd41B249f,0x8a010fDfC13e5B7A39c24B132739DbD6AB7CE33F7,0x34F55635bc3dbdEDF46f20c33ED8c73601E62e92,0x8d0148A9bA1Dc3a8b5287759EBCae39983A50366,0xb36C7f112245d3564f67cADAb59E4a9d126b26D5A
-WALLET_AVALANCHE=0xcd0dBCF3181AE3d0EB3C3bA564C9d7CEc5A7C22,0x1dC7166952469B0B4B8E2413fc44Bf09cd41B249f,0x8a010fDfC13e5B7A39c24B132739DbD6AB7CE33F7,0x34F55635bc3dbdEDF46f20c33ED8c73601E62e92,0x8d0148A9bA1Dc3a8b5287759EBCae39983A50366,0xb36C7f112245d3564f67cADAb59E4a9d126b26D5A
-WALLET_BASE=0xcd0dBCF3181AE3d0EB3C3bA564C9d7CEc5A7C22,0x1dC7166952469B0B4B8E2413fc44Bf09cd41B249f,0x8a010fDfC13e5B7A39c24B132739DbD6AB7CE33F7,0x34F55635bc3dbdEDF46f20c33ED8c73601E62e92,0x8d0148A9bA1Dc3a8b5287759EBCae39983A50366,0xb36C7f112245d3564f67cADAb59E4a9d126b26D5A
-WALLET_SOLANA=DiihedY21VLTHt2zYh3nQGhXVRYgnucQCTLpw1bk8jt2,12C5UkfbB4doZm4nF7n6CE6LkN5QbsyL4pf3XD2T3Fy5,3FiWSpp7TBqCVpqzgVAJa474drnSNfDHc9BpgRwNi3Z,HUeA4VAMRkc8sGw44B2v9vwL4KtRuEA2gXM4N1SuUAYx,FChANxTSwRJsRTC8EnstVKgJRKWV5r8GSQkaThJ4Sy4B,E9VvJYNR1JzcVSpMokEwoL4N1dvJ5nSKySb68TZmZVES
-WALLET_TRON=TE6edGLZ9obGyjfrVkRaE4httKtngKrzL7,TDeE4xBMpKgHKu5ovGowzYgGDN3A2tykQ2,TFLvuypYkWCFjvo2iRL36ARZ3uyReEjRGx
-WALLET_TON=UQpqivl289rowqg2KZbvshu8VJqg31F03HK8mJhbNOv55cdto,UQDmRf66NWP1UxznPs1GP075n8KBKJfiVVptllNdmAzbM9F_A
-WALLET_ROBINHOOD=0x8d0148A9bA1Dc3a8b5287759EBCae39983A50366,0x765c0d9517a03b98e466532b35115d2D4a63a9070,0x5Ff31ebD150240b2AEbe40660567f10f1e6b5566fe,0xEe16F466bDc5Be21FaB94458319299627fED4598,0x52617023390e392b73a67d08D2fa21F5c016E7CD9
+import os from itertools import cycle
+Store wallet rotation state in memory
+_wallet_rotation = {}
+CHAIN_CURRENCIES = { "Ethereum": "ETH", "BNB Chain": "BNB", "Polygon": "MATIC", "Arbitrum": "ETH", "Avalanche": "AVAX", "Fantom": "FTM", "Solana": "SOL", "Base": "ETH", "Cronos": "CRO", "Kava": "KAVA", "TRON": "TRX", "TON": "TON", "SUI": "SUI", "Robinhood": "ETH", }
+def get_wallets_for_blockchain(blockchain): """Get wallets for a blockchain from environment variables.""" env_key = f"WALLET_{blockchain.upper().replace(' ', '_')}" wallets_str = os.getenv(env_key, "")
+if not wallets_str:
+    return []
+
+# Split by comma and clean up
+wallets = [w.strip() for w in wallets_str.split(",") if w.strip()]
+return wallets
+def assign_wallet(telegram_user_id, blockchain): """Assign the next wallet in rotation for this blockchain.""" wallets = get_wallets_for_blockchain(blockchain)
+if not wallets:
+    return None
+
+# Initialize rotation if needed
+if blockchain not in _wallet_rotation:
+    _wallet_rotation[blockchain] = cycle(wallets)
+
+# Get next wallet
+wallet_address = next(_wallet_rotation[blockchain])
+currency = CHAIN_CURRENCIES.get(blockchain, blockchain)
+
+return {
+    "id": hash(wallet_address) % 10000,
+    "address": wallet_address,
+    "currency": currency,
+}
+def is_wallet_active(blockchain, address): """Check if a wallet is active for a blockchain.""" wallets = get_wallets_for_blockchain(blockchain) return address in wallets if wallets else False
